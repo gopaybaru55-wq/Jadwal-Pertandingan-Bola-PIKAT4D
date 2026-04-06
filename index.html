@@ -8,15 +8,31 @@
 </head>
 <body>
   <div class="container">
-    <div class="top-text">PREDIKSI OTOMATIS</div>
-    <h1>JADWAL DAN PREDIKSI BOLA</h1>
-    <p class="subtitle">Update Harian • Prediksi Skor • Analisa Otomatis</p>
 
+    <!-- HERO / HEADER -->
+    <div class="hero">
+      <div class="top-text">PREDIKSI OTOMATIS</div>
+      <h1>JADWAL DAN PREDIKSI BOLA</h1>
+      <p class="subtitle">Update Harian • Prediksi Skor • Analisa Otomatis</p>
+
+      <!-- TOMBOL -->
+      <div class="cta-buttons">
+        <a href="https://pikatsodap.com/" class="btn daftar">
+          DAFTAR SEKARANG
+        </a>
+        <a href="#" class="btn login">
+          LOGIN
+        </a>
+      </div>
+    </div>
+
+    <!-- CONTROL -->
     <div class="controls">
       <button id="refreshBtn">🔄 Refresh Prediksi</button>
       <span id="lastUpdate">Update: -</span>
     </div>
 
+    <!-- TABLE -->
     <div class="table-wrapper">
       <table id="jadwal-table">
         <thead>
@@ -33,15 +49,18 @@
       </table>
     </div>
 
+    <!-- LEGEND -->
     <div class="legend">
       <div><span class="dot live"></span> Sedang Main</div>
       <div><span class="dot soon"></span> Akan Main</div>
       <div><span class="dot finished"></span> Selesai</div>
     </div>
 
+    <!-- FOOTER -->
     <footer>
       <p>© 2026 PIKAT4D • Jadwal & Prediksi Bola</p>
     </footer>
+
   </div>
 
   <script src="script.js"></script>
