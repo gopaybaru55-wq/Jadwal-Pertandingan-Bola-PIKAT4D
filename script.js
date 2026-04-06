@@ -1,191 +1,91 @@
-const matchBody = document.getElementById("matchBody");
-const refreshBtn = document.getElementById("refreshBtn");
-const lastUpdate = document.getElementById("lastUpdate");
-
-// ================================
-// DATA PERTANDINGAN (EDIT DI SINI)
-// ================================
-const matches = [
+// DATA MATCH (TETAP SAMA)
+const data = [
   {
-    time: "18:00",
-    home: "Bayern Munchen",
-    away: "Dortmund",
-    league: "Bundesliga"
-  },
-  {
-    time: "20:00",
-    home: "Real Madrid",
-    away: "Barcelona",
-    league: "La Liga"
-  },
-  {
-    time: "22:00",
-    home: "Manchester United",
-    away: "Liverpool",
-    league: "Premier League"
-  },
-  {
-    time: "00:00",
-    home: "PSG",
-    away: "Marseille",
-    league: "Ligue 1"
-  },
-  {
-    time: "02:00",
-    home: "Chelsea",
-    away: "Arsenal",
-    league: "Premier League"
-  },
-  {
-    time: "03:00",
-    home: "Inter Milan",
-    away: "Juventus",
-    league: "Serie A"
+    league: "Premier League",
+    matches: [
+      { home:"Arsenal", homeLogo:"https://i.imgur.com/e4HFaAA.png", away:"Chelsea", awayLogo:"https://i.imgur.com/rRKLxQd.png", score:"2-1", time:"20:00" },
+      { home:"Liverpool", homeLogo:"https://i.imgur.com/kufe8Br.png", away:"Manchester City", awayLogo:"https://i.imgur.com/X7oPQOJ.png", score:"1-1", time:"22:00" }
+    ]
   }
 ];
 
-// ================================
-// CEK STATUS BERDASARKAN JAM
-// ================================
-function getMatchStatus(matchTime) {
-  const now = new Date();
-  const [hour, minute] = matchTime.split(":").map(Number);
-
-  const matchDate = new Date();
-  matchDate.setHours(hour, minute, 0, 0);
-
-  const diffMinutes = (now - matchDate) / (1000 * 60);
-
-  if (diffMinutes >= 0 && diffMinutes <= 120) {
-    return {
-      text: "SEDANG MAIN",
-      className: "live-badge"
-    };
-  } else if (diffMinutes > 120) {
-    return {
-      text: "SELESAI",
-      className: "finished-badge"
-    };
-  } else {
-    return {
-      text: "AKAN MAIN",
-      className: "soon-badge"
-    };
-  }
-}
-
-// ================================
-// POWER TEAM (FAKE AI STYLE)
-// ================================
-function getTeamStrength(team) {
-  const bigTeams = [
-    "Real Madrid", "Barcelona", "Manchester City", "Liverpool",
-    "Arsenal", "Bayern Munchen", "PSG", "Inter Milan",
-    "Juventus", "Chelsea", "Manchester United"
-  ];
-
-  let strength = 50 + Math.floor(Math.random() * 20);
-
-  if (bigTeams.includes(team)) {
-    strength += 15;
-  }
-
-  strength += team.length % 10;
-
-  return strength;
-}
-
-// ================================
-// PREDIKSI SKOR CERDAS
-// ================================
-function generatePrediction(home, away) {
-  const homePower = getTeamStrength(home);
-  const awayPower = getTeamStrength(away);
-
-  let homeGoals = 1;
-  let awayGoals = 1;
-
-  const diff = homePower - awayPower;
-
-  if (diff >= 15) {
-    homeGoals = 2 + Math.floor(Math.random() * 2);
-    awayGoals = Math.floor(Math.random() * 2);
-  } else if (diff <= -15) {
-    homeGoals = Math.floor(Math.random() * 2);
-    awayGoals = 2 + Math.floor(Math.random() * 2);
-  } else if (diff >= 5) {
-    homeGoals = 2;
-    awayGoals = 1;
-  } else if (diff <= -5) {
-    homeGoals = 1;
-    awayGoals = 2;
-  } else {
-    homeGoals = 1 + Math.floor(Math.random() * 2);
-    awayGoals = 1 + Math.floor(Math.random() * 2);
-  }
-
-  const total = homePower + awayPower;
-  const homeRate = Math.round((homePower / total) * 100);
-  const awayRate = 100 - homeRate;
-
-  let winRate = "";
-
-  if (homeGoals > awayGoals) {
-    winRate = `${homeRate}% ${home}`;
-  } else if (awayGoals > homeGoals) {
-    winRate = `${awayRate}% ${away}`;
-  } else {
-    winRate = `50% Draw`;
-  }
-
-  return {
-    score: `${homeGoals} - ${awayGoals}`,
-    winRate
-  };
-}
-
-// ================================
-// RENDER TABEL
-// ================================
-function renderMatches() {
-  matchBody.innerHTML = "";
-
-  matches.forEach(match => {
-    const status = getMatchStatus(match.time);
-    const prediksi = generatePrediction(match.home, match.away);
-
-    const row = document.createElement("tr");
-
-    row.innerHTML = `
-      <td class="time">${match.time}</td>
-      <td class="match">${match.home}<br>vs<br>${match.away}</td>
-      <td class="league">${match.league}</td>
-      <td><span class="status-badge ${status.className}">${status.text}</span></td>
-      <td class="prediction">${prediksi.score}</td>
-      <td class="winrate">${prediksi.winRate}</td>
-    `;
-
-    matchBody.appendChild(row);
+function render(){
+  let html = "";
+  data.forEach(l => {
+    html += `<h2>${l.league}</h2>`;
+    l.matches.forEach(m => {
+      html += `
+      <div class="card">
+        <div class="teams">
+          <div class="team"><img src="${m.homeLogo}"><span>${m.home}</span></div>
+          <div class="vs">VS</div>
+          <div class="team"><img src="${m.awayLogo}"><span>${m.away}</span></div>
+        </div>
+        <div class="score">${m.score}</div>
+        <div class="time">${m.time} WIB</div>
+        <a href="https://rinjaniman.com/sportsbook" target="_blank" class="card-btn">Main Sekarang</a>
+      </div>`;
+    });
   });
+  document.getElementById("matches").innerHTML = html;
+}
+render();
 
-  updateTimestamp();
+// BURGER MENU
+const burger = document.getElementById("burger");
+const dropdownCard = document.getElementById("dropdownCard");
+burger.addEventListener("click", () => {
+  dropdownCard.style.display = dropdownCard.style.display === "flex" ? "none" : "flex";
+  dropdownCard.style.flexDirection = "column";
+});
+
+// LOGIKA BANNER SLIDER
+let slideIndex = 0;
+const slider = document.getElementById('slider');
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.getElementById('dotsContainer');
+
+// Buat Dots
+slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => { showSlide(i); resetTimer(); });
+    dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index) {
+    slideIndex = index;
+    slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+    dots.forEach(d => d.classList.remove('active'));
+    dots[slideIndex].classList.add('active');
 }
 
-// ================================
-// UPDATE JAM
-// ================================
-function updateTimestamp() {
-  const now = new Date();
-  lastUpdate.textContent = `Update: ${now.toLocaleTimeString("id-ID")}`;
+// Navigasi Panah
+document.getElementById('nextBtn').addEventListener('click', () => {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+    resetTimer();
+});
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+    showSlide(slideIndex);
+    resetTimer();
+});
+
+// Auto-Slide 3 Detik
+let timer = setInterval(() => {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+}, 3000);
+
+function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+    }, 3000);
 }
-
-// ================================
-// REFRESH
-// ================================
-refreshBtn.addEventListener("click", renderMatches);
-
-// auto refresh setiap 60 detik
-setInterval(renderMatches, 60000);
-
-// load awal
-renderMatches();
