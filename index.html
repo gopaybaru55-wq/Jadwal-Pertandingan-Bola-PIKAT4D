@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Prediksi Bola PIKAT4D</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIKAT4D — Prediksi Skor Bola</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
 
-    <!-- HERO / HEADER -->
-    <div class="hero">
-      <div class="top-text">PREDIKSI OTOMATIS</div>
-      <h1>JADWAL DAN PREDIKSI BOLA</h1>
-      <p class="subtitle">Update Harian • Prediksi Skor • Analisa Otomatis</p>
+<div class="bg-overlay"></div>
 
-      <!-- TOMBOL -->
-      <div class="cta-buttons">
-        <a href="https://pikatsodap.com/" class="btn daftar">
-          DAFTAR SEKARANG
-        </a>
-        <a href="#" class="btn login">
-          LOGIN
-        </a>
-      </div>
+<header>
+  <div class="logo">PIKAT4D<span>4D</span></div>
+  <div class="menu-container">
+    <div class="burger" id="burger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-
-    <!-- CONTROL -->
-    <div class="controls">
-      <button id="refreshBtn">🔄 Refresh Prediksi</button>
-      <span id="lastUpdate">Update: -</span>
+    <div class="dropdown-card" id="dropdownCard">
+      <a href="https://pikatsodap.com/" target="_blank">Login</a>
+      <a href="https://pikatsodap.com/" target="_blank">Daftar</a>
+      <a href="https://rinjani-game-world--colombogelap.replit.app" target="_blank">Profil</a>
     </div>
-
-    <!-- TABLE -->
-    <div class="table-wrapper">
-      <table id="jadwal-table">
-        <thead>
-          <tr>
-            <th>Jam</th>
-            <th>Pertandingan</th>
-            <th>Liga</th>
-            <th>Status</th>
-            <th>Prediksi Skor</th>
-            <th>Win Rate</th>
-          </tr>
-        </thead>
-        <tbody id="matchBody"></tbody>
-      </table>
-    </div>
-
-    <!-- LEGEND -->
-    <div class="legend">
-      <div><span class="dot live"></span> Sedang Main</div>
-      <div><span class="dot soon"></span> Akan Main</div>
-      <div><span class="dot finished"></span> Selesai</div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-      <p>© 2026 PIKAT4D • Jadwal & Prediksi Bola</p>
-    </footer>
-
   </div>
+</header>
 
-  <script src="script.js"></script>
+<div class="marquee-container">
+    <div class="marquee-content">
+        <span class="icon">🔊</span>
+        <marquee scrollamount="5">PIKAT4D Rasakan sensasi hiburan kelas premium dengan berbagai pilihan menarik, atmosfer eksklusif, dan pengalaman digital yang dirancang lebih istimewa untuk Anda!
+!</marquee>
+        <div class="event-tag">EVENT</div>
+    </div>
+</div>
+
+<section class="banner-slider">
+    <div class="slider-wrapper" id="slider">
+        <div class="slide"><img src="https://i.imgur.com/VDY1cAE.png" alt="Banner 1"></div>
+        <div class="slide"><img src="https://i.imgur.com/NiAhn45.png" alt="Banner 2"></div>
+        <div class="slide"><img src="https://i.imgur.com/HEy90o8.png" alt="Banner 3"></div>
+        <div class="slide"><img src="https://i.imgur.com/ebLmmYA.png" alt="Banner 4"></div>
+        <div class="slide"><img src="https://i.imgur.com/GZux8Ft.png" alt="Banner 5"></div>
+    </div>
+
+    <button class="prev-btn" id="prevBtn">&#10094;</button>
+    <button class="next-btn" id="nextBtn">&#10095;</button>
+
+    <div class="dots-container" id="dotsContainer"></div>
+</section>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Prediksi Skor <em>PIKAT4D</em></h1>
+    <p>Analisa pertandingan pilihan & akurat</p>
+    <a href="https://rinjaniman.com" target="_blank" class="btn-primary">DAFTAR & MAIN SEKARANG</a>
+  </div>
+</section>
+
+<main id="matches"></main>
+
+<a href="https://pikatsodap.com/" target="_blank" class="floating">MAIN SEKARANG</a>
+
+<script src="script.js"></script>
 </body>
 </html>
