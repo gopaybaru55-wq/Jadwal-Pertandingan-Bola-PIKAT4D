@@ -1,10 +1,10 @@
 // DATA MATCH (TETAP SAMA)
 const data = [
   {
-    league: "Premier League",
+    league: "UEFA Champions League",
     matches: [
-      { home:"Arsenal", homeLogo:"https://i.imgur.com/e4HFaAA.png", away:"Chelsea", awayLogo:"https://i.imgur.com/rRKLxQd.png", score:"2-1", time:"20:00" },
-      { home:"Liverpool", homeLogo:"https://i.imgur.com/kufe8Br.png", away:"Manchester City", awayLogo:"https://i.imgur.com/X7oPQOJ.png", score:"1-1", time:"22:00" }
+      { home:"Real Madrid", homeLogo:"https://i.imgur.com/7XGqSJm.png", away:"Bayern Munchen", awayLogo:"https://i.imgur.com/Cs02sRw.jpeg", score:"2-1", time:"02:00" },
+      { home:"Sporting CP", homeLogo:"https://i.imgur.com/y94fPYS.png", away:"Arsenal", awayLogo:"https://i.imgur.com/Fu3O1Sc.png", score:"1-1", time:"02:00" }
     ]
   }
 ];
