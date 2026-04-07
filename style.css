@@ -2,7 +2,7 @@
 body { font-family: 'Barlow', sans-serif; color:white; overflow-x: hidden; }
 body::before {
   content:""; position:fixed; inset:0;
-  background:url('https://i.imgur.com/zGbaikU.jpeg') center/cover no-repeat;
+  background:url('https://i.imgur.com/mebkPuw.png') center/cover no-repeat;
   z-index:-2;
 }
 .bg-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:-1; }
