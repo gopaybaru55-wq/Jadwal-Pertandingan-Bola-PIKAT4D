@@ -65,6 +65,32 @@
 
 <a href="https://pikatsodap.com/" target="_blank" class="floating">MAIN SEKARANG</a>
 <a href="https://ertepe.luvtoberi.com/index.html?rtp=pikat4d" target="_blank" class="floating-rtp">RTP LIVE</a>
+    <!-- Tambahkan di dalam <body> tapi di luar container lain -->
+<a href="https://pikatsodap.com/" target="_blank" class="floating-rtp">RTP LIVE</a>
+
+<style>
+/* Tombol floating di sebelah kiri */
+.floating-rtp {
+    position: fixed;
+    left: 20px;      /* Jarak dari sisi kiri */
+    top: 50%;        /* Vertikal tengah */
+    transform: translateY(-50%);
+    background-color: gold;
+    color: #000;
+    font-weight: bold;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    z-index: 1000;  /* Selalu di atas */
+}
+.floating-rtp:hover {
+    background-color: #fff700;
+    color: #000;
+    transform: translateY(-50%) scale(1.05);
+}
+</style>
 
 <script src="script.js"></script>
 </body>
